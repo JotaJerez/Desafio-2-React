@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff; /* Cambiamos el color de fondo a blanco */
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Agregamos una sombra suave */
+}
+
+.icon {
+  color: black; /* Mantenemos el color negro */
+  font-size: 24px;
+}
+

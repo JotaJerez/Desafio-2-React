@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Alert from './Alert';
 
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
@@ -9,6 +10,7 @@ const Formulario = () => {
   const [error, setError] = useState(false);
   const [errorCorreo, setErrorCorreo] = useState(false);
   const [errorContraseña, setErrorContraseña] = useState(false);
+  const [registroExitoso, setRegistroExitoso] = useState(false);
 
   const validarDatos = (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const Formulario = () => {
     setError(false);
     setErrorCorreo(false);
     setErrorContraseña(false);
+    setRegistroExitoso(false);
 
     if (nombre === "" || email === "" || contraseña === "" || confirmacionContraseña === "") {
       setError(true);
@@ -23,6 +26,8 @@ const Formulario = () => {
       setErrorCorreo(true);
     } else if (contraseña !== confirmacionContraseña) {
       setErrorContraseña(true);
+    } else {
+      setRegistroExitoso(true);
     }
   };
 
@@ -32,59 +37,65 @@ const Formulario = () => {
   };
 
   return (
-    <>
-      <form onSubmit={validarDatos} className='formulario'>
-        <div className='form-group'>
-          <input 
-            placeholder='Nombre'
-            type="text"
-            name="nombre"
-            className="form-control"
-            onChange={(e) => setNombre(e.target.value)}
-            value={nombre}
-          />
-        </div>
+    <div className="formulario-container">
+      <div className={`formulario ${registroExitoso ? 'bg-success' : error || errorCorreo || errorContraseña ? 'bg-danger' : ''}`}>
+        <form onSubmit={validarDatos} className='p-4 rounded'>
+          <div className='form-group'>
+            <input 
+              placeholder='Nombre'
+              type="text"
+              name="nombre"
+              className="form-control"
+              onChange={(e) => setNombre(e.target.value)}
+              value={nombre}
+            />
+          </div>
 
-        <div className='form-group mt-3'>
-          <input 
-            placeholder='Email'
-            type="email"
-            name="email"
-            className="form-control"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
+          <div className='form-group mt-3'>
+            <input 
+              placeholder='Email'
+              type="email"
+              name="email"
+              className="form-control"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+          </div>
 
-        <div className='form-group mt-3'>
-          <input 
-            placeholder='Contraseña'
-            type="password"
-            name="contraseña"
-            className="form-control"
-            onChange={(e) => setContraseña(e.target.value)}
-            value={contraseña}
-          />
-        </div>
+          <div className='form-group mt-3'>
+            <input 
+              placeholder='Contraseña'
+              type="password"
+              name="contraseña"
+              className="form-control"
+              onChange={(e) => setContraseña(e.target.value)}
+              value={contraseña}
+            />
+          </div>
 
-        <div className='form-group mt-3'>
-          <input 
-            placeholder='Confirma tu contraseña'
-            type="password"
-            name="confirmacionContraseña"
-            className="form-control"
-            onChange={(e) => setConfirmacionContraseña(e.target.value)}
-            value={confirmacionContraseña}
-          />
-        </div>
+          <div className='form-group mt-3'>
+            <input 
+              placeholder='Confirma tu contraseña'
+              type="password"
+              name="confirmacionContraseña"
+              className="form-control"
+              onChange={(e) => setConfirmacionContraseña(e.target.value)}
+              value={confirmacionContraseña}
+            />
+          </div>
 
-        <button type='submit' className='btn btn-primary my-3'>Registrarse</button>
+          <button type='submit' className='btn btn-success mt-3'>Registrarse</button>
 
-        {error ? <p className='error-message'>Todos los campos son obligatorios</p> : null}
-        {errorCorreo ? <p className='error-message'>Escribe un correo válido</p> : null}
-        {errorContraseña ? <p className='error-message'>Las contraseñas deben ser iguales</p> : null}
-      </form>
-    </>
+
+
+          {registroExitoso ? (
+            <Alert type="success" message="¡Registro exitoso!" />
+          ) : error || errorCorreo || errorContraseña ? (
+            <Alert type="danger" message="Hay errores en el formulario" />
+          ) : null}
+        </form>
+      </div>
+    </div>
   );
 }
 

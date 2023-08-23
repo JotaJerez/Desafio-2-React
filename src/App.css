@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: white;
+  border-radius: 70px;
 }
 
 .logo {
@@ -54,14 +56,18 @@
   align-items: center;
   width: 60px;
   height: 60px;
-  background-color: #ffffff; /* Cambiamos el color de fondo a blanco */
-  border-radius: 50%;
+  background-color: #ffffff;
+  border-radius: 100%;
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Agregamos una sombra suave */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
+
 
 .icon {
   color: black; /* Mantenemos el color negro */
   font-size: 24px;
 }
 /* ----------------------------------------------------------------------------------- */
+body:not(.formulario) {
+  background-color: #c4e7b1; /* Cambia este valor al verde claro deseado */
+}

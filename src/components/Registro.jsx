@@ -1,15 +1,14 @@
-import React from 'react'
-import Formulario from './Formulario'
-import SocialButton from './SocialButton'
-import Alert from './Alert'
+import React from 'react';
+import Formulario from './Formulario';
+import SocialButton from './SocialButton';
 
-const Registro = () => {
+const Registro = ({ setMensaje }) => {
   return (
     <>
-        <SocialButton />
-        <Formulario />
+      <SocialButton setMensaje={setMensaje} />
+      <Formulario setMensaje={setMensaje} /> 
     </>
-  )
+  );
 }
 
-export default Registro
+export default Registro;

@@ -8,21 +8,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Registro = () => {
-  const [] = useState("");
+  const [alert, setAlert] = useState({
+    error: "",
+    msg: "",
+    color: ""
+  });
 
   return (
     <>
       <h1 className='mb-3'>Crea una cuenta</h1>
-
       <SocialButton
         face={faFacebookF}
         git={faGithub}
         linked={faLinkedinIn}
       />
-
-      <Formulario /> 
-
-      <Alert />
+      <Formulario setAlert={setAlert}/>
+      {alert.msg && <Alert msg={alert.msg} color={alert.color} />}
     </>
   );
 }

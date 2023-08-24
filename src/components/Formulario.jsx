@@ -1,33 +1,43 @@
 import { useState } from 'react';
 import Alert from './Alert';
 
-const Formulario = () => {
+const Formulario = ({setAlert}) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [confirmacionContraseña, setConfirmacionContraseña] = useState("");
 
-  const [error, setError] = useState(false);
-  const [errorCorreo, setErrorCorreo] = useState(false);
-  const [errorContraseña, setErrorContraseña] = useState(false);
-  const [registroExitoso, setRegistroExitoso] = useState(false);
-
   const validarDatos = (e) => {
     e.preventDefault();
 
-    setError(false);
-    setErrorCorreo(false);
-    setErrorContraseña(false);
-    setRegistroExitoso(false);
-
     if (nombre === "" || email === "" || contraseña === "" || confirmacionContraseña === "") {
-      setError(true);
+      setAlert({
+        error: true,
+        msg: "Completa los campos",
+        color: "bg-danger"
+      })
     } else if (!isValidEmail(email)) {
-      setErrorCorreo(true);
+      setAlert({
+        error: true,
+        msg: "Completa los campos",
+        color: "bg-danger"
+      })
     } else if (contraseña !== confirmacionContraseña) {
-      setErrorContraseña(true);
+      setAlert({
+        error: true,
+        msg: "Tus contraseñas deben ser iguales",
+        color: "bg-danger"
+      })
     } else {
-      setRegistroExitoso(true);
+      setNombre("")
+      setEmail("")
+      setContraseña("")
+      setConfirmacionContraseña("")
+      setAlert({
+        error: false,
+        msg: "Registro exitoso",
+        color: "bg-success"
+      })
     }
   };
 
@@ -38,7 +48,6 @@ const Formulario = () => {
 
   return (
     <div className="formulario-container">
-      <div className={`formulario ${registroExitoso ? 'bg-success' : error || errorCorreo || errorContraseña ? 'bg-danger' : ''}`}>
         <form onSubmit={validarDatos} className='p-4 rounded'>
           <div className='form-group'>
             <input 
@@ -86,15 +95,7 @@ const Formulario = () => {
 
           <button type='submit' className='btn btn-success mt-3'>Registrarse</button>
 
-
-
-          {registroExitoso ? (
-            <Alert type="success" message="¡Registro exitoso!" />
-          ) : error || errorCorreo || errorContraseña ? (
-            <Alert type="danger" message="Hay errores en el formulario" />
-          ) : null}
         </form>
-      </div>
     </div>
   );
 }

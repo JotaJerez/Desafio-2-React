@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-const SocialButton = ({ setMensaje }) => {
+const SocialButton = ({ setMensaje, face, git, linked }) => {
   const handleSocialButtonClick = (socialNetwork) => {
     let message = "";
 
@@ -29,13 +29,13 @@ const SocialButton = ({ setMensaje }) => {
       <h1 className='mb-3'>Crea una cuenta</h1>
       <div className='social-icons'>
         <div className='social-icon' onClick={() => handleSocialButtonClick("facebook")}>
-          <FontAwesomeIcon icon={faFacebookF} className='icon' />
+          <FontAwesomeIcon icon={face} className='icon' />
         </div>
         <div className='social-icon' onClick={() => handleSocialButtonClick("github")}>
-          <FontAwesomeIcon icon={faGithub} className='icon' />
+          <FontAwesomeIcon icon={git} className='icon' />
         </div>
         <div className='social-icon' onClick={() => handleSocialButtonClick("linkedin")}>
-          <FontAwesomeIcon icon={faLinkedinIn} className='icon' />
+          <FontAwesomeIcon icon={linked} className='icon' />
         </div>
       </div>
       <p className='mt-3'>O usa tu correo electrónico para registrarte</p>

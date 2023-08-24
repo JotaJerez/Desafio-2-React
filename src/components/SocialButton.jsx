@@ -5,13 +5,13 @@ const SocialButton = ({face, git, linked}) => {
   return (
     <>
       <div className='social-icons'>
-        <div className='social-icon' onClick={() => handleSocialButtonClick("facebook")}>
+        <div className='social-icon'>
           <FontAwesomeIcon icon={face} className='icon' />
         </div>
-        <div className='social-icon' onClick={() => handleSocialButtonClick("github")}>
+        <div className='social-icon'>
           <FontAwesomeIcon icon={git} className='icon' />
         </div>
-        <div className='social-icon' onClick={() => handleSocialButtonClick("linkedin")}>
+        <div className='social-icon'>
           <FontAwesomeIcon icon={linked} className='icon' />
         </div>
       </div>

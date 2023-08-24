@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Alert from './Alert';
 
 const Formulario = ({setAlert}) => {
   const [nombre, setNombre] = useState("");
@@ -19,7 +18,7 @@ const Formulario = ({setAlert}) => {
     } else if (!isValidEmail(email)) {
       setAlert({
         error: true,
-        msg: "Completa los campos",
+        msg: "Debes ingresar un correo válido",
         color: "bg-danger"
       })
     } else if (contraseña !== confirmacionContraseña) {

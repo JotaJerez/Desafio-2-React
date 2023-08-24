@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const SocialButton = ({face, git, linked}) => {
   return (

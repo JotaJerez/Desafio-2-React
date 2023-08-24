@@ -26,7 +26,6 @@ const SocialButton = ({ setMensaje, face, git, linked }) => {
 
   return (
     <>
-      <h1 className='mb-3'>Crea una cuenta</h1>
       <div className='social-icons'>
         <div className='social-icon' onClick={() => handleSocialButtonClick("facebook")}>
           <FontAwesomeIcon icon={face} className='icon' />

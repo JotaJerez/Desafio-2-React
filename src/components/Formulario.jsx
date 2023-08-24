@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Alert from './Alert';
 
-const Formulario = () => {
+const Formulario = ({setAlert}) => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
